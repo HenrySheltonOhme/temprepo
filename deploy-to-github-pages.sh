@@ -18,12 +18,13 @@ fi
 
 echo "✅ GitHub CLI authenticated"
 
-# Create the repository
-echo "📦 Creating GitHub repository 'temprepo'..."
-if gh repo create temprepo --public --description "Temporary repository for GitHub Pages" --clone=false; then
-    echo "✅ Repository created successfully"
+# Check if repository exists
+echo "📦 Checking GitHub repository 'temprepo'..."
+if gh repo view temprepo &>/dev/null; then
+    echo "✅ Repository 'temprepo' found"
 else
-    echo "⚠️  Repository might already exist, continuing..."
+    echo "❌ Repository 'temprepo' not found. Please create it first or check the name."
+    exit 1
 fi
 
 # Add remote origin
