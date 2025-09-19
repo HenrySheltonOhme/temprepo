@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Temp Repo - Snake Game!</title>
+    <title>🐍 Snake Game - Temp Repo</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -24,6 +24,7 @@
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
         h1 {
@@ -31,61 +32,6 @@
             text-align: center;
             margin-bottom: 30px;
             font-size: 2.5em;
-        }
-        
-        .welcome {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .feature {
-            padding: 20px;
-            border: 2px solid #e1e8ed;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-            border-color: #667eea;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #888;
-            font-size: 0.9em;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-            margin: 10px;
-        }
-        
-        .btn:hover {
-            background: #5a67d8;
-        }
-        
-        /* Snake Game Styles */
-        .game-section {
-            margin: 40px 0;
-            text-align: center;
         }
         
         .game-container {
@@ -142,6 +88,21 @@
             font-size: 14px;
         }
         
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
         @media (max-width: 600px) {
             #gameCanvas {
                 width: 300px;
@@ -152,61 +113,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Welcome to Temp Repo</h1>
+        <h1>🐍 Snake Game!</h1>
+        <p>Play the classic Snake game right in your browser!</p>
         
-        <div class="welcome">
-            This is a temporary repository hosted on GitHub Pages
-        </div>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>📄 Static Site</h3>
-                <p>Simple HTML, CSS, and JavaScript hosting</p>
+        <div class="game-container">
+            <div class="score">Score: <span id="score">0</span> | High Score: <span id="highScore">0</span></div>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="game-controls">
+                <button class="game-btn" id="startBtn" onclick="startGame()">Start Game</button>
+                <button class="game-btn" id="pauseBtn" onclick="pauseGame()" disabled>Pause</button>
+                <button class="game-btn" id="resetBtn" onclick="resetGame()">Reset</button>
             </div>
-            
-            <div class="feature">
-                <h3>🌐 Global CDN</h3>
-                <p>Fast loading from anywhere in the world</p>
-            </div>
-            
-            <div class="feature">
-                <h3>🔒 HTTPS</h3>
-                <p>Secure by default with SSL certificate</p>
+            <div class="instructions">
+                Use WASD or Arrow Keys to control the snake<br>
+                Eat the red food to grow and increase your score!
             </div>
         </div>
         
-        <!-- Snake Game Section -->
-        <div class="game-section">
-            <h2>🐍 Play Snake Game!</h2>
-            <div class="game-container">
-                <div class="score">Score: <span id="score">0</span> | High Score: <span id="highScore">0</span></div>
-                <canvas id="gameCanvas" width="400" height="400"></canvas>
-                <div class="game-controls">
-                    <button class="game-btn" id="startBtn" onclick="startGame()">Start Game</button>
-                    <button class="game-btn" id="pauseBtn" onclick="pauseGame()" disabled>Pause</button>
-                    <button class="game-btn" id="resetBtn" onclick="resetGame()">Reset</button>
-                </div>
-                <div class="instructions">
-                    Use WASD or Arrow Keys to control the snake<br>
-                    Eat the red food to grow and increase your score!
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="#snake" class="btn">Play Snake</a>
+        <div style="margin-top: 30px;">
             <a href="https://github.com/HenrySheltonOhme/temprepo" class="btn">View on GitHub</a>
-        </div>
-        
-        <div class="footer">
-            <p>Generated automatically • Hosted on GitHub Pages</p>
-            <p>Created: <span id="date"></span> | Updated: 2:44 PM</p>
         </div>
     </div>
     
     <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString();
-        
         // Snake Game Implementation
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -424,14 +353,6 @@
         // Initialize game
         generateFood();
         draw();
-        
-        // Add smooth scrolling to game section
-        document.querySelector('a[href="#snake"]').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.game-section').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
     </script>
 </body>
 </html>
